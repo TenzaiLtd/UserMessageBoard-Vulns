@@ -27,6 +27,7 @@ EXPOSE 5000
 # Set environment variables
 ENV FLASK_APP=main.py
 ENV FLASK_ENV=development
+ENV SEED_DATA=true
 
 # Run the application
 CMD ["uv", "run", "python", "main.py"]
