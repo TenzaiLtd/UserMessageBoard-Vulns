@@ -56,6 +56,12 @@ with app.app_context():
 
     from models import User
     
+    # Seed database if SEED_DATA environment variable is set
+    if os.environ.get("SEED_DATA", "false").lower() == "true":
+        print("SEED_DATA=true, seeding database with sample data...")
+        from seed_data import seed_database
+        seed_database()
+    
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
